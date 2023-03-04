@@ -1,12 +1,14 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import SharedComponent from './components/SharedComponent';
 import About from './pages/About';
+import Analytics from './pages/Analytics';
 import Contact from './pages/Contact';
 import Error404 from './pages/Error404';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Scope from './pages/Scope';
+import SpeechSynthesis from './pages/SpeechSynthesis';
 import Summary from './pages/Summary';
 import Footer from './shared/Footer';
 import Sidebar from './shared/Sidebar';
@@ -24,7 +26,10 @@ function App() {
       <Route path="/" element={<SharedComponent/>} >
    
     <Route index element={<Home/>} />
+
     <Route path="/home" element={<Home/>} />
+    <Route path="/analytics" element={<Analytics/>} />
+    <Route path="/test" element={<SpeechSynthesis/>} />
     <Route path="/about" element={<About/>} />
     <Route path="/contact" element={<Contact/>} />
     <Route path="/scope" element={<Scope/>} />

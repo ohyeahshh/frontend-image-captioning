@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 
 
 const Home = () => {
+  const synth = window.speechSynthesis;
+
+
 
   const [file, setFile] = useState(null)
   const [val, setVal] = useState("")
@@ -12,9 +15,13 @@ const Home = () => {
   const [waiting, setWaiting] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
-
-
   const [isUploaded, setIsUploaded] = useState(false)
+
+const speak = (text) => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.8;
+      synth.speak(utterance);
+    };
 
   const handleFileSelect = (event) => {
     setFile(event.target.files[0])
@@ -45,7 +52,8 @@ const Home = () => {
     const json = await response.json()
     console.log("ok");
     setVal(json.caption)
-    isUploaded(true)
+    speak("Caption for the image is - "+json.caption )
+    setIsUploaded(true)
     setLoading(false)
     console.log( isUploaded)
   } catch (error) {
